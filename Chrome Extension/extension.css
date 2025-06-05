@@ -10,6 +10,7 @@ input{
     padding: 10px 10px;
 }
 button{
+    cursor: pointer;
     background-color: #5f9341;
     border: none;
     color: #fff;
