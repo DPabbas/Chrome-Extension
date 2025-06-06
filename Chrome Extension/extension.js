@@ -8,10 +8,17 @@
 // step 6: make ul in html - grap it in a const var
 // step 7: put item in ul with ulEl.textcontent
 // step 8: make li html items with js (ulEl.innerHtml)
+// step 9: make the li in other way
+// step 10: improve the app
+// step 11: make myLeads to a dunamic array
+// step 12: clear the input value
+// step 13: put li to the <a> tag
+// step 14: make a shorter
 
 
 
-/*2*/ const myLeads = ["www.road.com","www.chrome.com","www.google.com"]
+/*11*/ const myLeads = []
+/*2*/// const myLeads = ["www.road.com","www.chrome.com","www.google.com"]
 
 /*2*/ const inputEl  = document.getElementById("input-el")
 
@@ -25,17 +32,48 @@
 
         /*4*/myLeads.push(inputEl.value)
 
-        console.log(myLeads)
+        /*4*///console.log(myLeads)
+
+        /*12*/ inputEl.value = ""
+
+        /*11*/ renderLeads()
 
     })
 
 
-/*4*/ for( let i = 0; i < myLeads.length; i++){
+    /*11*/function renderLeads (){
 
-    /*7*///ulEl.textContent += myLeads[i] + " "
+        /*10*/ let listItem = ""
 
-    /*8*/ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+        /*4*/ for( let i = 0; i < myLeads.length; i++)
+        
+            {
 
+                //here we have three ways to show the result
+
+                /*7*///ulEl.textContent += myLeads[i] + " "
+
+                /*8*///ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+
+                /*9*//*const li = document.createElement("li")
+                    
+                    li.textContent = myLeads[i] 
+
+                    ulEl.append(li)
+                */
+                /*10*/// listItem += "<li>" + myLeads[i] + "</li>"
+
+                /*13*/// listItem += "<li> <a target='-blank' href='" + myLeads[i] + "'>" + myLeads[i] + "</a></li>"
+
+                /*14*/ listItem += `
+                                        <li> 
+                                            <a target='-blank' href='${myLeads[i]}'>
+                                                ${myLeads[i]}
+                                            </a>
+                                        </li>
+                                    `
+            }
+
+        /*10*/ ulEl.innerHTML = listItem
+    }
 }
-
-
