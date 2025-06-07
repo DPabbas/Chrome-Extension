@@ -13,7 +13,7 @@
 // step 11: make myLeads to a dunamic array
 // step 12: clear the input value
 // step 13: put li to the <a> tag
-// step 14: make a shorter
+// step 14: make a shorter (Template Literal)
 
 
 
@@ -66,14 +66,13 @@
                 /*13*/// listItem += "<li> <a target='-blank' href='" + myLeads[i] + "'>" + myLeads[i] + "</a></li>"
 
                 /*14*/ listItem += `
-                                        <li> 
-                                            <a target='-blank' href='${myLeads[i]}'>
-                                                ${myLeads[i]}
-                                            </a>
-                                        </li>
-                                    `
+                    <li> 
+                        <a target='_blank' href='${myLeads[i]}'>
+                            ${myLeads[i]}
+                        </a>
+                    </li>
+                ` 
             }
 
         /*10*/ ulEl.innerHTML = listItem
     }
-}
