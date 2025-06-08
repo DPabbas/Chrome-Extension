@@ -22,6 +22,8 @@
 // step 20: delete btn
 // step 21: delete function
 // step 22: develop: instead renderLead we use render / give the render function myLeads as an perameters
+// step 23: save tab
+// step 24: get chrome url to save 
 
 
 /*16*/
@@ -45,16 +47,36 @@
 
 /*20*/ const deleteBtn = document.getElementById("delete-btn")
 
+/*23*/ const tabBtn = document.getElementById("save-btn")
+
 /*18*/const leadsFormLocalStorage = JSON.parse (localStorage.getItem ("myLeads"))
 
         
 /*19*/
     if(leadsFormLocalStorage){
 
-        myLeads = leadsFormLocalStorage
+        myLeads = leadsFormLocalStorage 
 
         render(myLeads)
     }
+
+
+/*23*/
+    /* const tabs = [
+        {URL:"https://www.linkedin.com/in/per"}
+    ] */
+
+    tabBtn.addEventListener( "click", function(){
+        
+        /*24*/ chrome.tabs.query({ active: true, currentWindow: true}, function(tabs){
+            
+            myLeads.push(tabs[0].url)
+            localStorage.setItem( "myLeads", JSON.stringify( myLeads ))
+            render(myLeads)
+
+        })
+    })
+
 
     /*11*/function render (leads){
 
@@ -82,8 +104,8 @@
 
                 /*14*/ listItem += `
                     <li> 
-                        <a target='_blank' href='${Leads[i]}'>
-                            ${Leads[i]}
+                        <a target='_blank' href='${myLeads[i]}'>
+                            ${myLeads[i]}
                         </a>
                     </li>
                 ` 
