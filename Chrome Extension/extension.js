@@ -14,10 +14,23 @@
 // step 12: clear the input value
 // step 13: put li to the <a> tag
 // step 14: make a shorter (Template Literal)
+// step 15: upload the extension
+// step 16: make localstorage
+// step 17: save myLeads to the localstorage
+// step 18: json.parse() - storge in var
 
+
+/*16*/
+
+//localStorage.setItem("myLead", "www.google.com")
+
+//console.log(localStorage.getItem("myLead"))
+
+//localStorage.clear()
 
 
 /*11*/ const myLeads = []
+
 /*2*/// const myLeads = ["www.road.com","www.chrome.com","www.google.com"]
 
 /*2*/ const inputEl  = document.getElementById("input-el")
@@ -25,6 +38,12 @@
 /*2*/ const inputBtn = document.getElementById("input-btn")
 
 /*6*/ const ulEl = document.getElementById("ul-el")
+
+
+/*18*/
+    let leadsFormLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+
+    console.log(leadsFormLocalStorage)
 
     /*1*/inputBtn.addEventListener("click" , function ()
     {
@@ -36,7 +55,14 @@
 
         /*12*/ inputEl.value = ""
 
+        /*17*/
+            //localStorage.setItem ( "myLeads", JSON.stringify ( myLeads ) )
+
         /*11*/ renderLeads()
+
+        /*17*/
+            //console.log(localStorage.getItem("myLeads"))
+
 
     })
 
