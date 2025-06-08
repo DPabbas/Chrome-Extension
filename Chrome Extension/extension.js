@@ -18,6 +18,10 @@
 // step 16: make localstorage
 // step 17: save myLeads to the localstorage
 // step 18: json.parse() - storge in var
+// step 19: check truthly 
+// step 20: delete btn
+// step 21: delete function
+// step 22: develop: instead renderLead we use render / give the render function myLeads as an perameters
 
 
 /*16*/
@@ -26,10 +30,10 @@
 
 //console.log(localStorage.getItem("myLead"))
 
-//localStorage.clear()
 
 
-/*11*/ const myLeads = []
+
+/*11*/ let myLeads = []
 
 /*2*/// const myLeads = ["www.road.com","www.chrome.com","www.google.com"]
 
@@ -39,39 +43,24 @@
 
 /*6*/ const ulEl = document.getElementById("ul-el")
 
+/*20*/ const deleteBtn = document.getElementById("delete-btn")
 
-/*18*/
-    let leadsFormLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
+/*18*/const leadsFormLocalStorage = JSON.parse (localStorage.getItem ("myLeads"))
 
-    console.log(leadsFormLocalStorage)
+        
+/*19*/
+    if(leadsFormLocalStorage){
 
-    /*1*/inputBtn.addEventListener("click" , function ()
-    {
-        /*3*///myLeads.push("www.awesomelead.com")
+        myLeads = leadsFormLocalStorage
 
-        /*4*/myLeads.push(inputEl.value)
+        render(myLeads)
+    }
 
-        /*4*///console.log(myLeads)
-
-        /*12*/ inputEl.value = ""
-
-        /*17*/
-            //localStorage.setItem ( "myLeads", JSON.stringify ( myLeads ) )
-
-        /*11*/ renderLeads()
-
-        /*17*/
-            //console.log(localStorage.getItem("myLeads"))
-
-
-    })
-
-
-    /*11*/function renderLeads (){
+    /*11*/function render (leads){
 
         /*10*/ let listItem = ""
 
-        /*4*/ for( let i = 0; i < myLeads.length; i++)
+        /*4*/ for( let i = 0; i < leads.length; i++)
         
             {
 
@@ -93,8 +82,8 @@
 
                 /*14*/ listItem += `
                     <li> 
-                        <a target='_blank' href='${myLeads[i]}'>
-                            ${myLeads[i]}
+                        <a target='_blank' href='${Leads[i]}'>
+                            ${Leads[i]}
                         </a>
                     </li>
                 ` 
@@ -102,3 +91,38 @@
 
         /*10*/ ulEl.innerHTML = listItem
     }
+
+/*20*/
+    deleteBtn.addEventListener( "dblclick", function(){
+
+        localStorage.clear()
+        myLeads = []
+        render(myLeads)
+        
+    })
+
+
+    /*1*/inputBtn.addEventListener("click" , function ()
+    {
+        /*3*///myLeads.push("www.awesomelead.com")
+
+        /*4*/myLeads.push(inputEl.value)
+
+        /*4*///console.log(myLeads)
+
+        /*12*/ inputEl.value = ""
+
+        /*17*/
+            localStorage.setItem ( "myLeads", JSON.stringify ( myLeads ) )
+
+        /*11*/ render(myLeads)
+
+        /*17*/
+            //console.log(localStorage.getItem("myLeads"))
+
+
+    })
+
+
+
+
